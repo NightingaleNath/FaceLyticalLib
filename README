@@ -4,13 +4,13 @@ A professional face detection and capture library for iOS applications. FaceLyti
 
 ## Features
 
-- 📱 Real-time face detection using Vision framework
-- 🔍 Visual feedback when a face is detected
-- 📷 Automatic image capture of detected faces
-- 🎯 Corner guides to help users position their face
-- 👨‍🏫 Built-in tutorial walkthrough for users
-- 🔄 Support for both UIKit and SwiftUI integration
-- 📊 Base64 image conversion for network/storage use cases
+- Real-time face detection using Vision framework
+- Visual feedback when a face is detected
+- Automatic image capture of detected faces
+- Corner guides to help users position their face
+- Built-in tutorial walkthrough for users
+- Support for both UIKit and SwiftUI integration
+- Base64 image conversion for network/storage use cases
 
 ## Requirements
 
@@ -354,9 +354,6 @@ faceLytical.createFaceDetectionView(onCapture: { image in
     if let base64String = FaceLyticalLib.convertImageToBase64(image) {
         // Use the base64 string (e.g., send to server)
         print("Image as base64: \(base64String.prefix(20))...")
-        
-        // You could store it in your view model
-        // viewModel.imageBase64 = base64String
     }
 })
 ```
@@ -382,7 +379,7 @@ faceLytical.presentFaceDetectionForBase64(from: viewController) { base64String i
 
 ## API Reference
 
-### `FaceLytical`
+### FaceLytical
 
 The main entry point for the library.
 
@@ -396,7 +393,7 @@ The main entry point for the library.
 - `static convertImageToBase64(_ image:compressionQuality:) -> String?`: Convert a UIImage to base64 string
 - `presentFaceDetectionForBase64(from:compressionQuality:completion:)`: Present face detection UI and return the captured image as base64 string
 
-### `CameraManager`
+### CameraManager
 
 Manages camera operations, face detection, and photo capture.
 
@@ -432,7 +429,6 @@ Face detection requires a physical camera, so you'll need to test on a physical 
 If users deny camera permissions, you'll need to guide them to enable permissions in Settings:
 
 ```swift
-// For Swift
 if AVCaptureDevice.authorizationStatus(for: .video) == .denied {
     // Show alert with instructions to open Settings
     let alert = UIAlertController(
@@ -455,8 +451,8 @@ if AVCaptureDevice.authorizationStatus(for: .video) == .denied {
 
 ## License
 
-FaceLyticalLib is available under the MIT license. See the [LICENSE](LICENSE) file for more info.
+FaceLyticalLib is available under the MIT license. See the LICENSE file for more info.
 
 ## Credits
 
-Created by [Nathaniel Nkrumah]
+Created by Nathaniel Nkrumah
