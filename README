@@ -1,8 +1,8 @@
-### Using Base64 Image Conversion
+# Using Base64 Image Conversion
 
 FaceLyticalLib provides convenient methods for working with base64 image representations:
 
-#### SwiftUI - Convert after capture
+# SwiftUI - Convert after capture
 
 ```swift
 // First capture the image
