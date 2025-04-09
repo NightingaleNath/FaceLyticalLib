@@ -1,44 +1,4 @@
-# Using Base64 Image Conversion
-
-FaceLyticalLib provides convenient methods for working with base64 image representations:
-
-# SwiftUI - Convert after capture
-
-```swift
-// First capture the image
-faceLytical.createFaceDetectionView(onCapture: { image in
-    // Store the image for display
-    viewModel.handleCapturedFace(image: image)
-    
-    // Convert to base64 if needed for network transmission or storage
-    if let base64String = FaceLyticalLib.convertImageToBase64(image) {
-        // Use the base64 string (e.g., send to server)
-        print("Image as base64: \(base64String.prefix(20))...")
-        
-        // You could store it in your view model
-        // viewModel.imageBase64 = base64String
-    }
-})
-```
-
-#### UIKit - Get base64 directly
-
-```swift
-// Get base64 string directly, useful for API calls
-faceLytical.presentFaceDetectionForBase64(from: viewController) { base64String in
-    if let imageString = base64String {
-        // Use the base64 string for API calls or storage
-        apiService.uploadImage(base64: imageString)
-        
-        // If you also need the UIImage for display
-        if let imageData = Data(base64Encoded: imageString),
-           let uiImage = UIImage(data: imageData) {
-            // Display the image
-            self.imageView.image = uiImage
-        }
-    }
-}
-```# FaceLyticalLib
+# FaceLyticalLib
 
 A professional face detection and capture library for iOS applications. FaceLyticalLib provides an easy-to-integrate solution for detecting and capturing face images with real-time feedback.
 
@@ -378,7 +338,46 @@ class ViewController: UIViewController {
 }
 ```
 
+## Using Base64 Image Conversion
 
+FaceLyticalLib provides convenient methods for working with base64 image representations:
+
+### SwiftUI - Convert after capture
+
+```swift
+// First capture the image
+faceLytical.createFaceDetectionView(onCapture: { image in
+    // Store the image for display
+    viewModel.handleCapturedFace(image: image)
+    
+    // Convert to base64 if needed for network transmission or storage
+    if let base64String = FaceLyticalLib.convertImageToBase64(image) {
+        // Use the base64 string (e.g., send to server)
+        print("Image as base64: \(base64String.prefix(20))...")
+        
+        // You could store it in your view model
+        // viewModel.imageBase64 = base64String
+    }
+})
+```
+
+### UIKit - Get base64 directly
+
+```swift
+// Get base64 string directly, useful for API calls
+faceLytical.presentFaceDetectionForBase64(from: viewController) { base64String in
+    if let imageString = base64String {
+        // Use the base64 string for API calls or storage
+        apiService.uploadImage(base64: imageString)
+        
+        // If you also need the UIImage for display
+        if let imageData = Data(base64Encoded: imageString),
+           let uiImage = UIImage(data: imageData) {
+            // Display the image
+            self.imageView.image = uiImage
+        }
+    }
+}
 ```
 
 ## API Reference
